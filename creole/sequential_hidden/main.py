@@ -71,7 +71,7 @@ for i in range(2):
     # Load data
     ###############################################################################
 
-    args.data = './data/' + language
+    args.data = '../neural_stacking/data/' + language
     corpus = data.Corpus(args.data,None)
     #if language== 'en':
         #corpus = data.Corpus(args.data, None)
@@ -231,6 +231,8 @@ for i in range(2):
                 # Anneal the learning rate if no improvement has been seen in the validation dataset.
                 lr /= 4.0
 
+        import matplotlib
+        matplotlib.use('agg')
         import matplotlib.pyplot as plt
         fig = plt.figure()
         plt.plot(x,y)

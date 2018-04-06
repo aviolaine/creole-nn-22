@@ -1,7 +1,7 @@
 import torch.nn as nn
 import torch
 from torch.autograd import Variable
-from gensim.models import KeyedVectors
+#from gensim.models import KeyedVectors
 import numpy as np
 
 class RNNModel(nn.Module):
@@ -15,7 +15,7 @@ class RNNModel(nn.Module):
         # self.encoder.weight.data.copy_(torch.from_numpy(pretrained_weight))
         # self.encoder.weight.requires_grad = false
         # > parameters = filter(lambda p: p.requires_grad, net.parameters()) on optimizer to tell it to not grad encoder
-        self.rnn = nn.LSTM(ninp, nhid//2, nlayers, dropout=dropout, bidirectional=True)
+        self.rnn = nn.LSTM(ninp, nhid, nlayers, dropout=dropout, bidirectional=False)
         self.decoder = nn.Linear(nhid, ntoken)
 
         # Optionally tie weights as in:
@@ -74,5 +74,5 @@ class RNNModel(nn.Module):
 
     def init_hidden(self, bsz, prev=None):
         weight = next(self.parameters()).data
-        return (Variable(weight.new(self.nlayers*2, bsz, self.nhid//2).zero_()),
-                Variable(weight.new(self.nlayers*2, bsz, self.nhid//2).zero_()))
+        return (Variable(weight.new(self.nlayers, bsz, self.nhid).zero_()),
+                Variable(weight.new(self.nlayers, bsz, self.nhid).zero_()))

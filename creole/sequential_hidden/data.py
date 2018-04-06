@@ -1,9 +1,9 @@
 import os
 import torch
 import numpy as np
-from gensim.models.keyedvectors import KeyedVectors
-from gensim.models.word2vec import Word2Vec
-from gensim.models import FastText
+#from gensim.models.keyedvectors import KeyedVectors
+#from gensim.models.word2vec import Word2Vec
+#from gensim.models import FastText
 
 class Dictionary(object):
     def __init__(self):

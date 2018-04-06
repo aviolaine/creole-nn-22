@@ -255,7 +255,7 @@ import model #... yeah
 
 ####### STAGE 2: train low-resource stacked LSTM #########
 language = args.second
-print("Creating stacked model",None)
+print("Creating stacked model",language)
     
 
 ###############################################################################
@@ -263,7 +263,7 @@ print("Creating stacked model",None)
 ###############################################################################
 
 args.data = './data/' + language
-corpus = data.Corpus(args.data, language)
+corpus = data.Corpus(args.data, None)
 
 # Starting from sequential data, batchify arranges the dataset into columns.
 # For instance, with the alphabet as the sequence and batch size 4, we'd get
